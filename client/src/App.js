@@ -6,6 +6,8 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Layout from "./pages/Layout";
 import Main from "./pages/Main";
 import About from "./pages/About";
+import Katakana from "./pages/Katakana";
+import Hiragana from "./pages/Hiragana";
 
 function App() {
 	return (
@@ -16,6 +18,8 @@ function App() {
 					<>
 						<Route path="/Main" element={<Main />} />
 						<Route path="/About" element={<About />} />
+						<Route path="/Kata" element={<Katakana />} />
+						<Route path="/Hira" element={<Hiragana />} />
 					</>
 				</Route>
 			</Routes>
