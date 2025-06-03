@@ -40,6 +40,23 @@ body {
   background-color: #DFD0B8;
 }
 
+.main-color {
+  background-color: variables.$mainColor;
+}
+
+.secondary-color {
+  background-color: variables.$secondaryColor;
+}
+
+.accent-color {
+  background-color: variables.$accentColor;
+}
+
+.text-color, h1, h2, a, p {
+  color: variables.$textColor;
+}
+
+
 .rarity-common {
   background: variables.$common-color;
 }
