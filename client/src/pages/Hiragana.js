@@ -3,6 +3,8 @@ import React from "react";
 import FlipCard from '../components/atoms/flipping-container';
 // import KanaCard from "../components/molecules/KanaCard/index";
 
+import "./css/Hiragana.scss";
+
 const hiragana = [
     { kana: "あ", romaji: "a" },   { kana: "い", romaji: "i" },   { kana: "う", romaji: "u" },   { kana: "え", romaji: "e" },   { kana: "お", romaji: "o" },
     { kana: "か", romaji: "ka" },  { kana: "き", romaji: "ki" },  { kana: "く", romaji: "ku" },  { kana: "け", romaji: "ke" },  { kana: "こ", romaji: "ko" },
@@ -25,10 +27,14 @@ export default function Hiragana() {
     }, []);
 
     return (
-        <div style={{ display: 'flex', gap: '1rem', padding: '2rem' }}>
-            {randomHiragana.map((item, idx) => (
-                <FlipCard key={idx} front={item.kana} back={item.romaji} />
-            ))}
+        <div className="HiraganaPage">
+            <h1 className="title">Title!</h1>
+            <h2 className="title">Subtitle!</h2>
+            <div className="FlipCardContainer">
+                {randomHiragana.map((item, idx) => (
+                    <FlipCard key={idx} front={item.kana} back={item.romaji} />
+                ))}
+            </div>
         </div>
     );
 }
