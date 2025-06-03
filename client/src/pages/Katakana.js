@@ -2,6 +2,9 @@ import React from "react";
 
 import FlipCard from '../components/atoms/flipping-container';
 
+// import "./css/Katakana.scss";
+import "./css/Hiragana.scss";
+
 const katakana = [
     { kana: "ア", romaji: "a" },   { kana: "イ", romaji: "i" },   { kana: "ウ", romaji: "u" },   { kana: "エ", romaji: "e" },   { kana: "オ", romaji: "o" },
     { kana: "カ", romaji: "ka" },  { kana: "キ", romaji: "ki" },  { kana: "ク", romaji: "ku" },  { kana: "ケ", romaji: "ke" },  { kana: "コ", romaji: "ko" },
@@ -24,10 +27,14 @@ export default function Katakana() {
     }, []);
 
     return (
-        <div style={{ display: 'flex', gap: '1rem', padding: '2rem' }}>
-            {randomKatakana.map((item, idx) => (
-                <FlipCard key={idx} front={item.kana} back={item.romaji} />
-            ))}
+        <div className="KatakanaPage">
+            <h1 className="title">Title!</h1>
+            <h2 className="title">Subtitle!</h2>
+            <div className="FlipCardContainer">
+                {randomKatakana.map((item, idx) => (
+                    <FlipCard key={idx} front={item.kana} back={item.romaji} />
+                ))}
+            </div>
         </div>
     );
 }
