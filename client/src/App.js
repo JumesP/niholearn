@@ -21,6 +21,17 @@ import KatakanaFlipCards from "./pages/stages/Stage2/KatakanaFlipCards";
 import KatakanaQuiz from "./pages/stages/Stage2/KatakanaQuiz";
 import KatakanaChart from "./pages/stages/Stage2/KatakanaChart";
 
+import Stage3Home from "./pages/stages/Stage3/Stage3Home";
+import BasicVocabFlipCards from "./pages/stages/Stage3/BasicVocabFlipCards";
+import GreetingsQuiz from "./pages/stages/Stage3/GreetingsQuiz";
+import DialoguePractice from "./pages/stages/Stage3/DialoguePractice";
+import SentencePractice from "./pages/stages/Stage3/SentencePractice";
+
+import Stage4Home from "./pages/stages/Stage4/Stage4Home";
+import ParticleQuiz from "./pages/stages/Stage4/ParticleQuiz";
+import SentenceBuilder from "./pages/stages/Stage4/SentenceBuilder";
+import GrammarDrills from "./pages/stages/Stage4/GrammarDrills";
+
 // import "./App.css";
 
 import Layout from "./pages/Layout";
@@ -43,18 +54,31 @@ function App() {
 						    <Route index element={<Stage1Home />} />
 						    <Route path="main" element={<Stage1Home />} />
 						    <Route path="chart" element={<HiraganaChart />} />
-						    <Route path="flipcards" element={<HiraganaFlipCards />} />
+						    <Route path="flip-cards" element={<HiraganaFlipCards />} />
 						    <Route path="quiz" element={<HiraganaQuiz />} />
 						</Route>
 						<Route path="/Stage2" element={<Stage2 />}>
 							<Route index element={<Stage2Home />} />
 							<Route path="main" element={<Stage2Home />} />
 							<Route path="chart" element={<KatakanaChart/>} />
-							<Route path="flipcards" element={<KatakanaFlipCards />} />
+							<Route path="flip-cards" element={<KatakanaFlipCards />} />
 							<Route path="quiz" element={<KatakanaQuiz />} />
 						</Route>
-						<Route path="/Stage3" element={<Stage3 />} />
-						<Route path="/Stage4" element={<Stage4 />} />
+						<Route path="/Stage3" element={<Stage3 />}>
+							<Route index element={<Stage3Home />} />
+							<Route path="main" element={<Stage3Home />} />
+							<Route path="vocab-cards" element={<BasicVocabFlipCards />} />
+							<Route path="greetings" element={<GreetingsQuiz />} />
+							<Route path="dialogues" element={<DialoguePractice />} />
+							<Route path="sentences" element={<SentencePractice />} />
+						</Route>
+						<Route path="/Stage4" element={<Stage4 />}>
+							<Route index element={<Stage4Home />} />
+							<Route path="main" element={<Stage4Home />} />
+							<Route path="particle-quiz" element={<ParticleQuiz />} />
+							<Route path="sentence-builder" element={<SentenceBuilder />} />
+							<Route path="grammar-drills" element={<GrammarDrills />} />
+						</Route>
 						<Route path="/Stage5" element={<Stage5 />} />
 						<Route path="/Stage6" element={<Stage6 />} />
 						<Route path="/Stage7" element={<Stage7 />} />
