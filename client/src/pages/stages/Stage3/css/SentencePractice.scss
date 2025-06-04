@@ -1,0 +1,166 @@
+.sentence-practice {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+
+    .practice-info {
+        background: #f8f9fa;
+        padding: 1.5rem;
+        border-radius: 8px;
+        margin-bottom: 2rem;
+
+        .progress {
+            display: flex;
+            justify-content: space-between;
+            color: #7f8c8d;
+            margin-bottom: 1rem;
+        }
+
+        .english-prompt {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #2c3e50;
+        }
+    }
+
+    .exercise-container {
+        background: white;
+        padding: 2rem;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+        .fill-blank-exercise {
+            text-align: center;
+            margin-bottom: 2rem;
+
+            .template {
+                font-size: 1.5rem;
+                color: #2c3e50;
+                margin-bottom: 1rem;
+            }
+
+            input {
+                padding: 0.75rem;
+                font-size: 1.1rem;
+                border: 2px solid #3498db;
+                border-radius: 4px;
+                width: 200px;
+                text-align: center;
+
+                &:focus {
+                    outline: none;
+                    border-color: #2980b9;
+                }
+            }
+        }
+
+        .word-bank-exercise {
+            .sentence-construction {
+                min-height: 100px;
+                border: 2px dashed #bdc3c7;
+                border-radius: 8px;
+                padding: 1rem;
+                margin-bottom: 2rem;
+                display: flex;
+                flex-wrap: wrap;
+                gap: 0.5rem;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .available-words {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 1rem;
+                justify-content: center;
+                margin-bottom: 2rem;
+            }
+
+            .word-block, .word-option {
+                padding: 0.5rem 1rem;
+                background: #ecf0f1;
+                border-radius: 4px;
+                cursor: pointer;
+                transition: all 0.2s ease;
+                user-select: none;
+
+                &:hover {
+                    background: #bdc3c7;
+                }
+            }
+
+            .word-block {
+                background: #3498db;
+                color: white;
+            }
+        }
+
+        .controls {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 2rem 0;
+
+            button {
+                padding: 0.75rem 1.5rem;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                transition: background 0.2s ease;
+
+                &:first-child {
+                    background: #3498db;
+                    color: white;
+
+                    &:hover {
+                        background: #2980b9;
+                    }
+                }
+
+                &:nth-child(2) {
+                    background: #95a5a6;
+                    color: white;
+
+                    &:hover {
+                        background: #7f8c8d;
+                    }
+                }
+
+                &:last-child {
+                    background: #f1c40f;
+                    color: #2c3e50;
+
+                    &:hover {
+                        background: #f39c12;
+                    }
+                }
+            }
+        }
+
+        .hint {
+            text-align: center;
+            padding: 1rem;
+            background: rgba(241, 196, 15, 0.1);
+            border-radius: 4px;
+            color: #d35400;
+            margin-bottom: 1rem;
+        }
+
+        .feedback {
+            text-align: center;
+            padding: 1rem;
+            border-radius: 4px;
+            font-size: 1.2rem;
+
+            &.correct {
+                background: rgba(46, 204, 113, 0.1);
+                color: #27ae60;
+            }
+
+            &.incorrect {
+                background: rgba(231, 76, 60, 0.1);
+                color: #c0392b;
+            }
+        }
+    }
+}

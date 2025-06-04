@@ -1,0 +1,146 @@
+.vocab-flashcards {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+
+    .category-selection {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        margin-bottom: 2rem;
+
+        .category-btn {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 4px;
+            background: #f8f9fa;
+            color: #2c3e50;
+            cursor: pointer;
+            transition: all 0.2s ease;
+
+            &:hover {
+                background: #e9ecef;
+            }
+
+            &.active {
+                background: #3498db;
+                color: white;
+            }
+        }
+    }
+
+    .card-progress {
+        text-align: center;
+        color: #7f8c8d;
+        margin-bottom: 1rem;
+    }
+
+    .flashcard {
+        width: 300px;
+        height: 200px;
+        margin: 0 auto;
+        perspective: 1000px;
+        cursor: pointer;
+
+        &.flipped .card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            border-radius: 8px;
+
+            .card-front,
+            .card-back {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                backface-visibility: hidden;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 1rem;
+                border-radius: 8px;
+                background: white;
+            }
+
+            .card-front {
+                .japanese-text {
+                    font-size: 2rem;
+                    color: #2c3e50;
+                }
+            }
+
+            .card-back {
+                transform: rotateY(180deg);
+
+                .english-text {
+                    font-size: 1.5rem;
+                    color: #34495e;
+                }
+            }
+        }
+    }
+
+    .example-btn {
+        display: block;
+        margin: 2rem auto;
+        padding: 0.75rem 1.5rem;
+        border: none;
+        border-radius: 4px;
+        background: #95a5a6;
+        color: white;
+        cursor: pointer;
+        transition: background 0.2s ease;
+
+        &:hover {
+            background: #7f8c8d;
+        }
+    }
+
+    .example-sentence {
+        text-align: center;
+        margin: 1rem 0;
+        padding: 1rem;
+        background: #f8f9fa;
+        border-radius: 4px;
+
+        .japanese {
+            font-size: 1.2rem;
+            color: #2c3e50;
+        }
+    }
+
+    .navigation-buttons {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        margin: 2rem 0;
+
+        button {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 4px;
+            background: #3498db;
+            color: white;
+            cursor: pointer;
+            transition: background 0.2s ease;
+
+            &:hover {
+                background: #2980b9;
+            }
+        }
+    }
+
+    .keyboard-hints {
+        text-align: center;
+        color: #95a5a6;
+        font-size: 0.9rem;
+    }
+}
