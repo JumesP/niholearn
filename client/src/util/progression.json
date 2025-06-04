@@ -1,0 +1,59 @@
+{
+  "stages": [
+    {
+      "id": 0,
+      "unlocked": true,
+      "progress": 100,
+      "requirements": []
+    },
+    {
+      "id": 1,
+      "unlocked": true,
+      "progress": 75,
+      "requirements": [0]
+    },
+    {
+      "id": 2,
+      "unlocked": true,
+      "progress": 30,
+      "requirements": [1]
+    },
+    {
+      "id": 3,
+      "unlocked": true,
+      "progress": 0,
+      "requirements": [1, 2]
+    },
+    {
+      "id": 4,
+      "unlocked": true,
+      "progress": 0,
+      "requirements": [3]
+    },
+    {
+      "id": 5,
+      "unlocked": true,
+      "progress": 0,
+      "requirements": [4]
+    },
+    {
+      "id": 6,
+      "unlocked": true,
+      "progress": 0,
+      "requirements": [4]
+    },
+    {
+      "id": 7,
+      "unlocked": true,
+      "progress": 0,
+      "requirements": [6]
+    },
+    {
+      "id": 8,
+      "unlocked": true,
+      "progress": 0,
+      "requirements": [5, 7]
+    }
+  ]
+}
+
