@@ -1,113 +1,162 @@
 # niholearn 🎌
 
-**niholearn** is a minimalist, offline-capable Japanese language learning tool focused on mastering Hiragana and Katakana through interactive flip cards. Built with React and designed for simplicity, this Progressive Web App (PWA) is perfect for beginners learning to read Japanese.
+**niholearn** is a comprehensive Japanese language learning platform designed with a clear progression path from complete beginner to conversational fluency. Built with React and modern web technologies, this Progressive Web App (PWA) offers a structured, engaging approach to mastering Japanese through interactive lessons, quizzes, and practice exercises.
 
 ---
 
 ## 🌟 Features
 
-- 🃏 Interactive flip cards for Hiragana & Katakana
-- 🎨 Clean, mobile-first UI with dark mode support
-- ⚡ Fast and lightweight — works offline (PWA)
-- 🧠 Tracks progress locally (coming soon)
-- 📁 Export & import progress (coming soon)
+- 📚 Structured Learning Path
+  - Complete beginner to JLPT N5 level
+  - Step-by-step progression through 8 carefully designed stages
+  - Clear milestones and achievement tracking
+
+
+- 🎯 Interactive Learning Tools
+  - 🃏 Flip cards for Hiragana, Katakana, and basic vocabulary
+  - 📝 Interactive quizzes and exercises
+  - 🗣️ Dialogue practice and sentence building
+  - 📊 Reference charts and learning aids
+
+
+- 🎨 Modern User Experience
+  - Clean, minimalist Japanese-inspired design
+  - Mobile-first responsive interface
+  - Smooth animations and transitions
+  - Dark mode support
+
+
+- ⚡ Technical Features
+  - Progressive Web App (PWA) for offline learning
+  - Local progress tracking
+  - Fast and lightweight performance
+  - Cross-device synchronization (coming soon)
 
 ---
-<!--
-## 🚀 Demo
 
-> Live Demo: [https://yourusername.github.io/niholearn](https://yourusername.github.io/niholearn) TBD
+## 🗺️ Learning Stages
 
-(Or install it as an app from your browser!) 
+1. **Stage 0**: Introduction & Setup
+2. **Stage 1**: Hiragana Mastery
+3. **Stage 2**: Katakana Mastery
+4. **Stage 3**: Basic Vocabulary & Phrases
+5. **Stage 4**: Intro to Grammar
+6. **Stage 5**: Kanji Introduction
+7. **Stage 6**: Reading Practice
+8. **Stage 7**: Listening & Speaking
+9. **Stage 8**: Review & JLPT N5 Prep
 
 ---
--->
 
 ## 📦 Tech Stack
 
-- **React** – UI library
-- **Tailwind CSS** – for clean, utility-first styling
-- **Vanilla JS** – flip card logic
-- **PWA** – Offline-first, installable
-- **[Wanakana](https://github.com/WaniKani/wanakana)** – Hiragana/Katakana transliteration
-- **Custom card flip logic** (no external dependencies)
+- **Frontend**
+  - React
+  - SCSS for component styling
+  - Modern JavaScript (ES6+)
+  
+- **Features & Libraries**
+  - [Wanakana](https://github.com/WaniKani/wanakana) – Japanese text transliteration
+  - Custom animation system
+  - Progressive Web App capabilities
+  - Local storage for progress tracking
+
+- **Development**
+  - Modular component architecture
+  - Responsive design principles
+  - Performance optimization
 
 ---
 
-## 🖥️ Installation
+## 🚀 Getting Started
 
-Clone the repo and run locally:
-
+1. Clone the repository
 ```bash
 git clone https://github.com/yourusername/niholearn.git
-cd niholearn/client
-npm install
-npm run dev  # or npm start
 ```
 
----
+2. Install dependencies
+```bash
+cd niholearn/client
+npm install
+```
 
-## 🧪 Development Scripts
+3. Start the development server
+```bash
+npm start
+```
 
-| Command        | Description                     |
-|----------------|---------------------------------|
-| `npm run dev`  | Start dev server                |
-| `npm run build`| Build production version        |
-| `npm run lint` | Lint your code                  |
+Visit `http://localhost:3000` to see the app in action.
 
 ---
 
 ## 📁 Project Structure
 
-```bash
-.
-├── public/              # Static assets, manifest.json
-├── src/
-│   ├── components/      # React components (Card, Deck, etc.)
-│   ├── data/            # Kana data JSON
-│   ├── utils/           # Helper functions
-│   ├── App.jsx          # Main app component
-│   └── main.jsx         # Entry point
-├── tailwind.config.js   # Tailwind setup
-└── package.json
+```
+niholearn/
+├── client/
+│   ├── public/          # Static files
+│   └── src/
+│       ├── components/  # Reusable UI components
+│       │   ├── atoms/     # Basic building blocks
+│       │   ├── molecules/ # Composite components
+│       │   └── organisms/ # Complex components
+│       ├── pages/      # Main page components
+│       │   └── stages/   # Learning stage components
+│       └── util/       # Utilities and data
+└── README.md
 ```
 
+### Component Architecture
+
+- **Atoms**: Basic building blocks (buttons, inputs, containers)
+- **Molecules**: Combinations of atoms (cards, charts, navigation)
+- **Organisms**: Complex UI components (quizzes, interactive exercises)
+- **Pages**: Full page components and stage-specific layouts
 ---
 
-## 🧩 Future Plans
+## 📱 Installation as PWA
 
-- [ ] Add Kanji + JLPT vocab decks
-- [ ] Add spaced repetition system (SRS)
-- [ ] Save & resume user progress with localStorage
-- [ ] User authentication and syncing (if backend added later)
-- [ ] Electron version for desktop
-
----
-
-## 📱 PWA Support
-
-- Works offline
-- Installable on desktop and mobile (via "Add to Home Screen")
-- Manifest and service worker included
-
----
-
-## 📖 License
-
-MIT © [James Price](https://github.com/JumesP)
+1. Visit the website in Chrome or any modern browser
+2. Look for the "Install" or "Add to Home Screen" option
+3. Enjoy offline access and app-like experience!
 
 ---
 
 ## 🤝 Contributing
 
-Contributions are welcome! Open an issue or submit a PR.
+Contributions are welcome! Please feel free to submit a Pull Request.
 
 ---
-<!--
-## 📬 Contact
 
-For questions, suggestions, or feedback:
+## 📄 License
 
-📧 your.email@example.com  
-🐦 [@yourhandle](https://twitter.com/yourhandle)
--->
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+---
+
+## 🙏 Acknowledgments
+
+- The Japanese language community
+- Contributors and supporters
+- Open source libraries and tools used in this project
+
+
+---
+
+## 🔮 Future Plans
+
+### Short-term Goals
+- [ ] Progress tracking with localStorage and JSON
+- [ ] Offline mode improvements
+- [ ] Spaced repetition system for vocabulary
+- [ ] Voice recognition for pronunciation practice
+
+### Medium-term Goals
+- [ ] Gamification system with rewards
+- [ ] Advanced kanji learning tools
+
+### Long-term Vision
+- [ ] AI-powered learning recommendations
+- [ ] Native speaker conversation practice
+- [ ] JLPT preparation modules (N5 to N1)
