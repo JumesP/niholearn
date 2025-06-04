@@ -1,32 +1,65 @@
-import { Outlet, Link } from "react-router-dom";
-import React from "react";
-import "./css/Layout.scss";
+import { Outlet, NavLink } from "react-router-dom";
+                  import React, { useState, useEffect, useRef } from "react";
+                  import "./css/Layout.scss";
 
-const Layout = () => {
-    return (
-        <>
-            <nav>
-                <ul>
-                    <li>
-                        <Link to="/">Home</Link>
-                    </li>
-                    <li>
-                        <Link to="/About">About</Link>
-                    </li>
-                    <li>
-                        <Link to="/Main">Main Again</Link>
-                    </li>
-                    <li>
-                        <Link to="/Kata">Kata</Link>
-                    </li>
-                    <li>
-                        <Link to="/Hira">Hira</Link>
-                    </li>
-                </ul>
-            </nav>
-            <Outlet />
-        </>
-    );
-};
+                  const Layout = () => {
+                      const [showStages, setShowStages] = useState(false);
+                      const dropdownRef = useRef(null);
 
-export default Layout;
+                      useEffect(() => {
+                          const handleClickOutside = (event) => {
+                              if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+                                  setShowStages(false);
+                              }
+                          };
+
+                          document.addEventListener('mousedown', handleClickOutside);
+                          return () => document.removeEventListener('mousedown', handleClickOutside);
+                      }, []);
+
+                      return (
+                          <>
+                              <nav>
+                                  <ul>
+                                      <li>
+                                          <NavLink to="/">Home</NavLink>
+                                      </li>
+                                      <li>
+                                          <NavLink to="/About">About</NavLink>
+                                      </li>
+                                      <li>
+                                          <NavLink to="/Main">Main</NavLink>
+                                      </li>
+                                      <li>
+                                          <NavLink to="/Kata">Kata</NavLink>
+                                      </li>
+                                      <li>
+                                          <NavLink to="/Hira">Hira</NavLink>
+                                      </li>
+                                      <li className="dropdown" ref={dropdownRef}>
+                                          <li
+                                              className="dropdown-button"
+                                              onClick={() => setShowStages(!showStages)}
+                                          >
+                                              Stages
+                                          </li>
+                                          {showStages && (
+                                              <ul className="dropdown-content">
+                                                  {[...Array(9)].map((_, index) => (
+                                                      <li key={index}>
+                                                          <NavLink to={`/Stage${index}`}>
+                                                              Stage {index}
+                                                          </NavLink>
+                                                      </li>
+                                                  ))}
+                                              </ul>
+                                          )}
+                                      </li>
+                                  </ul>
+                              </nav>
+                              <Outlet />
+                          </>
+                      );
+                  };
+
+                  export default Layout;
