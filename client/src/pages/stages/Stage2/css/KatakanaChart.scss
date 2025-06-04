@@ -1,0 +1,21 @@
+.KatakanaChart {
+  padding: 10px;
+}
+
+.Katakana-chart {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+
+  & > :first-child {
+    flex: 1;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+
+  & > :nth-child(2) {
+    flex: 3;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+}
