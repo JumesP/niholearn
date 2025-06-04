@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import Container from '../components/atoms/container';
 import { HiraganaCharacters, KatakanaCharacters, KanjiCharacters } from '../util/data/characters';
-import { getProgression, updateCharacterProgress } from '../util/progression-stage1';
+import { updateCharacterProgress, getProgression } from '../util/progression-stage1';
 import './css/Progression.scss';
 
 const Progression = () => {
@@ -36,40 +35,53 @@ const Progression = () => {
     }));
   };
 
-  const renderCharacters = (characters, type) => (
-   <div className={`dropdown-content ${openDropdown[type] ? 'open' : ''}`}>
-     {characters.map((char, index) => {
-       // Find progression data for this character
-       const progressData = characterData.characters.find(c => c.character === char.kana) || {};
+  const renderCharacters = (characters, type) => {
+    const calculateProgressPercentage = (progress, thresholds) => {
+      const currentThreshold = thresholds.find(t => progress < t) || thresholds[thresholds.length - 1];
+      const previousThreshold = thresholds[thresholds.indexOf(currentThreshold) - 1] || 0;
+      const progressInLevel = progress - previousThreshold;
+      const levelRange = currentThreshold - previousThreshold;
+      return Math.min((progressInLevel / levelRange) * 100, 100);
+    };
 
-       return (
-         <div
-           key={index}
-           className="character-container"
-           onClick={() => testProgressUpdate(char.kana)} // Added for testing - comment this and below out to remove the test functionality
-           style={{ cursor: 'pointer' }} // Visual indication it's clickable
-         >
-           <p>
-             <span className="kana">{type === 'kanji' ? char.kanji : char.kana}</span>
-             <span className="romaji">{type === 'kanji' ? char.meaning : char.romaji}</span>
-           </p>
-           <div className="progress-info">
-             <span>Level: {progressData.level || 'Wood'}</span>
-             <span>Progress: {progressData.progress || 0}</span>
-           </div>
-           <div className="progress-bar">
-             <div
-               className="progress"
-               style={{
-                 width: `${(progressData.progress || 0) % 100}%`
-               }}
-             ></div>
-           </div>
-         </div>
-       );
-     })}
-   </div>
-  );
+    return (
+      <div className={`dropdown-content ${openDropdown[type] ? 'open' : ''}`}>
+        {characters.map((char, index) => {
+          const progressData = characterData.characters.find(c => c.character === char.kana) || {};
+          const percentage = calculateProgressPercentage(
+            progressData.progress || 0,
+            progressData.thresholds || [10, 25, 50, 100, 200, 400, 800]
+          );
+
+          return (
+            <div
+              key={index}
+              className="character-container"
+              onClick={() => testProgressUpdate(char.kana)} // Added for testing - comment this and below out to remove the test functionality
+              style={{ cursor: 'pointer' }} // Visual indication it's clickable
+            >
+              <p>
+                <span className="kana">{type === 'kanji' ? char.kanji : char.kana}</span>
+                <span className="romaji">{type === 'kanji' ? char.meaning : char.romaji}</span>
+              </p>
+              <div className="progress-info">
+                <span>Level: {progressData.level || 'Wood'}</span>
+                <span>Progress: {progressData.progress || 0}</span>
+              </div>
+              <div className="progress-bar">
+                <div
+                  className="progress"
+                  style={{
+                    width: `${percentage}%`
+                  }}
+                ></div>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    );
+  };
 
   return (
     <div className="progression-page">
