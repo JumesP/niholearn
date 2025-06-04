@@ -2,6 +2,7 @@ import { Outlet, NavLink } from "react-router-dom";
 import React, { useState, useEffect, useRef } from "react";
 import "./css/Layout.scss";
 import progressionData from "../util/progression.json";
+import Progression from './Progression';
 
 const Layout = () => {
     const [showStages, setShowStages] = useState(false);
@@ -107,6 +108,9 @@ const Layout = () => {
                     <ul>
                         <li>
                             <NavLink to="/About">About</NavLink>
+                        </li>
+                        <li>
+                            <NavLink to="/Progression">Progression</NavLink>
                         </li>
                     </ul>
                 </div>
