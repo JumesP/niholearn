@@ -1,44 +1,108 @@
+import React from 'react';
+import { Link } from 'react-router-dom';
+import './css/Stage2Home.scss';
+
 const Stage2Home = () => {
     return (
-        <div className="stage-2-katakana">
-            <h2>Stage 2: Katakana Mastery</h2>
+        <div className="stage2-home">
+            <div className="stage-introduction">
+                <h2>Katakana: The Second Japanese Alphabet</h2>
+                <p>Learn the writing system used for foreign words and emphasis through interactive practice.</p>
+            </div>
 
-            <p>Katakana is the second Japanese phonetic script. It is primarily used for foreign words, names, technical
-                terms, and onomatopoeia.</p>
+            <div className="learning-paths">
+                <div className="path-card">
+                    <h3>Katakana Flashcards</h3>
+                    <p>Learn each character with interactive cards.</p>
+                    <ul>
+                        <li>Master katakana characters</li>
+                        <li>Learn proper pronunciation</li>
+                        <li>Practice by character groups</li>
+                    </ul>
+                    <Link to="/stage2/flip-cards" className="start-button">Start Learning</Link>
+                </div>
 
-            <h3>Why Learn Katakana?</h3>
-            <ul>
-                <li>Essential for reading loanwords and foreign names.</li>
-                <li>Commonly used in menus, signs, and advertisements.</li>
-                <li>Important for understanding pop culture and media.</li>
-            </ul>
+                <div className="path-card">
+                    <h3>Katakana Quiz</h3>
+                    <p>Test your katakana recognition and recall.</p>
+                    <ul>
+                        <li>Interactive testing</li>
+                        <li>Progress tracking</li>
+                        <li>Customizable groups</li>
+                    </ul>
+                    <Link to="/stage2/quiz" className="start-button">Take Quiz</Link>
+                </div>
 
-            <h3>How This Stage Works</h3>
-            <p>Like Hiragana, Katakana characters follow the gojūon structure. You will learn them in grouped sets:</p>
+                <div className="path-card">
+                    <h3>Reference Chart</h3>
+                    <p>Complete katakana reference with readings.</p>
+                    <ul>
+                        <li>Full character chart</li>
+                        <li>Common loanwords</li>
+                        <li>Group organization</li>
+                    </ul>
+                    <Link to="/stage2/chart" className="start-button">View Chart</Link>
+                </div>
+            </div>
 
-            <ul>
-                <li><strong>A-row:</strong> ア (a), イ (i), ウ (u), エ (e), オ (o)</li>
-                <li><strong>K-row:</strong> カ (ka), キ (ki), ク (ku), ケ (ke), コ (ko)</li>
-                <li><strong>S-row:</strong> サ (sa), シ (shi), ス (su), セ (se), ソ (so)</li>
-                <li>... continuing through the remaining rows.</li>
-            </ul>
-
-            <h3>Interactive Tools</h3>
-            <ul>
-                <li>Flip-style flashcards with Katakana on the front and Romaji + audio on the back</li>
-                <li>Mini quizzes to test character recognition and typing</li>
-                <li>Practice with real-world loanwords (e.g., コンピュータ – computer)</li>
-                <li>Progress tracking for each group</li>
-            </ul>
-
-            <p><em>Note:</em> Katakana characters can look more angular and similar at first – spend extra time
-                reviewing visually similar characters like シ (shi) vs ツ (tsu).</p>
-
-            <p>Once you finish this stage, you'll be able to read all basic phonetic characters in Japanese. Get ready
-                for vocabulary building and simple sentences in Stage 3!</p>
+            <div className="quick-reference">
+                <h3>Quick Reference</h3>
+                <div className="reference-sections">
+                    <div className="section">
+                        <h4>Vowels</h4>
+                        <div className="character-grid">
+                            <div className="character-item">
+                                <span className="kana">ア</span>
+                                <span className="romaji">a</span>
+                            </div>
+                            <div className="character-item">
+                                <span className="kana">イ</span>
+                                <span className="romaji">i</span>
+                            </div>
+                            <div className="character-item">
+                                <span className="kana">ウ</span>
+                                <span className="romaji">u</span>
+                            </div>
+                            <div className="character-item">
+                                <span className="kana">エ</span>
+                                <span className="romaji">e</span>
+                            </div>
+                            <div className="character-item">
+                                <span className="kana">オ</span>
+                                <span className="romaji">o</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="section">
+                        <h4>Common Loanwords</h4>
+                        <div className="example-words">
+                            <div className="word-item">
+                                <span className="katakana">コーヒー</span>
+                                <span className="meaning">kōhī (coffee)</span>
+                            </div>
+                            <div className="word-item">
+                                <span className="katakana">パン</span>
+                                <span className="meaning">pan (bread)</span>
+                            </div>
+                            <div className="word-item">
+                                <span className="katakana">テレビ</span>
+                                <span className="meaning">terebi (TV)</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="section">
+                        <h4>Study Tips</h4>
+                        <ul>
+                            <li>Compare with hiragana shapes</li>
+                            <li>Practice with common loanwords</li>
+                            <li>Write characters repeatedly</li>
+                            <li>Use flashcards daily</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
-
-    )
-}
+    );
+};
 
 export default Stage2Home;
