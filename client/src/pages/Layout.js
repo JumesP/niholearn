@@ -25,16 +25,7 @@ import { Outlet, NavLink } from "react-router-dom";
                                           <NavLink to="/">Home</NavLink>
                                       </li>
                                       <li>
-                                          <NavLink to="/About">About</NavLink>
-                                      </li>
-                                      <li>
                                           <NavLink to="/Main">Main</NavLink>
-                                      </li>
-                                      <li>
-                                          <NavLink to="/Kata">Kata</NavLink>
-                                      </li>
-                                      <li>
-                                          <NavLink to="/Hira">Hira</NavLink>
                                       </li>
                                       <li className="dropdown" ref={dropdownRef}>
                                           <li
@@ -54,6 +45,9 @@ import { Outlet, NavLink } from "react-router-dom";
                                                   ))}
                                               </ul>
                                           )}
+                                      </li>
+                                      <li>
+                                          <NavLink to="/About">About</NavLink>
                                       </li>
                                   </ul>
                               </nav>
