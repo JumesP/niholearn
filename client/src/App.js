@@ -37,7 +37,7 @@ import GrammarDrills from "./pages/stages/Stage4/GrammarDrills";
 import Layout from "./pages/Layout";
 import Main from "./pages/Main";
 import About from "./pages/About";
-import Katakana from "./pages/stages/Stage2/KatakanaFlipCards";
+import Progression from "./pages/Progression";
 
 
 function App() {
@@ -49,6 +49,7 @@ function App() {
 					<>
 						<Route path="/Main" element={<Main />} />
 						<Route path="/About" element={<About />} />
+						<Route path="/Progression" element={<Progression />} />
 						<Route path="/Stage0" element={<Stage0 />} />
 						<Route path="/Stage1" element={<Stage1 />}>
 						    <Route index element={<Stage1Home />} />
