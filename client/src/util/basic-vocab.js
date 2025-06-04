@@ -1,3 +1,5 @@
+// Used for Stage 3.
+
 const vocabularyData = {
     nouns: [
         { japanese: 'やさい', english: 'vegetable', example: 'やさいを たべます' },

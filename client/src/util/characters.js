@@ -1,3 +1,5 @@
+// Used for Stage 1 and 2
+
 const HiraganaCharacters = [
         // Vowels
         { kana: 'あ', romaji: 'a' },

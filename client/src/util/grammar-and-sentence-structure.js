@@ -1,3 +1,5 @@
+// Used for Stage 4
+
 const grammarExercises = [
     {
         type: 'fill-blank',
