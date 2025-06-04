@@ -5,7 +5,7 @@ import "./css/KatakanaChart.scss"
 
 const KatakanaChart = () => {
     return (
-        <div className="HiraganaChart">
+        <div className="KatakanaChart">
             <h1 className="title">Hiragana Chart</h1>
             <p className="description">This chart displays all the Hiragana characters along with their Romaji equivalents.</p>
             <div className="hiragana-chart">
