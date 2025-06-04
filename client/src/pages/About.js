@@ -71,7 +71,7 @@ const About = () => {
         <div className="decorative-line"></div>
         <h2>Created with <span className="heart">❤️</span> by Language Enthusiasts</h2>
         <p className="team-description">
-          NihoLearn was developed by a team of passionate developers and Japanese language experts
+          NihoLearn was developed by a passionate developer and Japanese language experts
           who understand the challenges of learning a new language.
         </p>
       </div>
