@@ -149,6 +149,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## 🔮 Future Plans
 
 ### Short-term Goals
+- [ ] Finish all 8 Stages
 - [ ] Progress tracking with localStorage and JSON
 - [ ] Offline mode improvements
 - [ ] Spaced repetition system for vocabulary
