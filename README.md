@@ -1,6 +1,8 @@
 # niholearn 🎌
 
-**niholearn** is a comprehensive Japanese language learning platform designed with a clear progression path from complete beginner to conversational fluency. Built with React and modern web technologies, this Progressive Web App (PWA) offers a structured, engaging approach to mastering Japanese through interactive lessons, quizzes, and practice exercises.
+**niholearn** is a comprehensive Japanese language learning platform designed with a clear progression path from complete beginner to conversational fluency. 
+
+Built with React and modern web technologies, this Progressive Web App (PWA) offers a structured, engaging approach to mastering Japanese through interactive lessons, quizzes, and practice exercises.
 
 ---
 
