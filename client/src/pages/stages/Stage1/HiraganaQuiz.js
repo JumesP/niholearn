@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import './css/HiraganaQuiz.scss';
+import { HiraganaCharacters } from "../../../util/data/characters";
+import { updateCharacterProgress } from '../../../util/progression-stage1';
 
 const hiraganaSet = [
     // Existing vowels, k, s, t, n, and h groups
@@ -42,6 +44,15 @@ const hiraganaGroups = {
     extra: hiraganaSet.slice(45) // for ん
 };
 
+// Update this function to use the imported updateCharacterProgress
+const updateProgression = async (character) => {
+    try {
+        await updateCharacterProgress(character, 1); // Award 1 XP for correct answer
+    } catch (error) {
+        console.error('Error updating character progress:', error);
+    }
+};
+
 const HiraganaQuiz = () => {
     const [currentQuestion, setCurrentQuestion] = useState(null);
     const [userAnswer, setUserAnswer] = useState('');
@@ -64,7 +75,6 @@ const HiraganaQuiz = () => {
         extra: false
     });
     const [quizLength, setQuizLength] = useState(10);
-    const [activeCharacterSet, setActiveCharacterSet] = useState([]);
     const [remainingCharacters, setRemainingCharacters] = useState([]);
     const [quizResults, setQuizResults] = useState([]);
     const [showSuccess, setShowSuccess] = useState(false);
@@ -105,7 +115,6 @@ const HiraganaQuiz = () => {
         const firstQuestion = selectedChars[Math.floor(Math.random() * selectedChars.length)];
         setRemainingCharacters(prev => prev.filter(char => char !== firstQuestion));
 
-        setActiveCharacterSet(selectedChars);
         setCurrentQuestion(firstQuestion);
         setIsConfiguring(false);
         setScore(0);
@@ -129,6 +138,7 @@ const HiraganaQuiz = () => {
         if (isCorrect) {
             setScore(score + 1);
             setFeedback('Correct! 🎉');
+            updateProgression(currentQuestion.kana);
         } else {
             setFeedback(`Incorrect. The answer was "${currentQuestion.romaji}"`);
         }
@@ -156,6 +166,48 @@ const HiraganaQuiz = () => {
         setScore(0);
         setQuestionsAnswered(0);
         setFeedback('');
+    };
+
+    const handleAnswer = async () => {
+        if (!currentQuestion) return;
+
+        const isCorrect = userAnswer.toLowerCase() === currentQuestion.romaji.toLowerCase();
+
+        if (isCorrect) {
+            setScore(prev => prev + 1);
+            setFeedback('Correct!');
+            setShowSuccess(true);
+            // Award XP for correct answer
+            await updateCharacterProgress(currentQuestion.kana, 2); // Award 2 XP for each correct answer
+        } else {
+            setFeedback(`Incorrect. The answer was ${currentQuestion.romaji}`);
+            setShowSuccess(false);
+        }
+
+        // Add to quiz results
+        setQuizResults(prev => [...prev, {
+            character: currentQuestion.kana,
+            userAnswer: userAnswer,
+            correctAnswer: currentQuestion.romaji,
+            isCorrect
+        }]);
+
+        setUserAnswer('');
+        setQuestionsAnswered(prev => prev + 1);
+
+        // Check if quiz is complete
+        if (questionsAnswered + 1 >= quizLength || remainingCharacters.length === 0) {
+            setCurrentQuestion(null);
+            setIsConfiguring(true);
+        } else {
+            setCurrentQuestion(getRandomQuestion());
+        }
+
+        // Hide feedback after 2 seconds
+        setTimeout(() => {
+            setFeedback('');
+            setShowSuccess(false);
+        }, 2000);
     };
 
     const QuizConfig = () => (
