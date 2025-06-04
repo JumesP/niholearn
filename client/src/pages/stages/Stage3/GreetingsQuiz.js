@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { greetingsData, introductionData} from "../../../util/basic-vocab";
+import { greetingsData, introductionData} from "../../../util/data/basic-vocab";
 
 import './css/GreetingsQuiz.scss';
 

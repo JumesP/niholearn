@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { vocabularyData } from "../../../util/basic-vocab";
+import { vocabularyData } from "../../../util/data/basic-vocab";
 
 import './css/BasicVocabFlipCards.scss';
 

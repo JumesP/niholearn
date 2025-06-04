@@ -1,5 +1,5 @@
 import ReferenceChart from "../../../components/molecules/ReferenceChart";
-import { KatakanaCharacters } from "../../../util/characters";
+import { KatakanaCharacters } from "../../../util/data/characters";
 
 import "./css/KatakanaChart.scss"
 

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { grammarExercises } from '../../../util/grammar-and-sentence-structure';
+import { grammarExercises } from '../../../util/data/grammar-and-sentence-structure';
 
 import './css/GrammarDrills.scss';
 

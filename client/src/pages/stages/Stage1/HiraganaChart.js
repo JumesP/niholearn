@@ -1,5 +1,5 @@
 import ReferenceChart from "../../../components/molecules/ReferenceChart";
-import { HiraganaCharacters } from "../../../util/characters";
+import { HiraganaCharacters } from "../../../util/data/characters";
 
 import "./css/HiraganaChart.scss"
 

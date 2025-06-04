@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { KatakanaCharacters } from "../../../util/characters";
+import { KatakanaCharacters } from "../../../util/data/characters";
 
 import './css/KatakanaQuiz.scss';
 
