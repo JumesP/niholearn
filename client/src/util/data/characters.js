@@ -107,4 +107,17 @@ const KatakanaCharacters = [
     { kana: 'ン', romaji: 'n' }
 ];
 
-export { HiraganaCharacters, KatakanaCharacters };
+const KanjiCharacters = [ // add more
+    { kanji: '日', meaning: 'sun/day', readings: ['にち', 'じつ'] },
+    { kanji: '月', meaning: 'moon/month', readings: ['つき', 'げつ'] },
+    { kanji: '火', meaning: 'fire', readings: ['ひ', 'か'] },
+    { kanji: '水', meaning: 'water', readings: ['みず', 'すい'] },
+    { kanji: '木', meaning: 'tree', readings: ['き', 'もく'] },
+    { kanji: '金', meaning: 'gold/money', readings: ['かね', 'きん'] },
+    { kanji: '土', meaning: 'earth/soil', readings: ['つち', 'ど'] },
+    { kanji: '山', meaning: 'mountain', readings: ['やま', 'さん'] },
+    { kanji: '川', meaning: 'river', readings: ['かわ', 'せん'] },
+    { kanji: '田', meaning: 'rice field', readings: ['た', 'でん'] }
+];
+
+export { HiraganaCharacters, KatakanaCharacters, KanjiCharacters };
