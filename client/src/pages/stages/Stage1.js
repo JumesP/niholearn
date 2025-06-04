@@ -1,23 +1,26 @@
-import { NavLink, Outlet } from "react-router-dom";
-// import "./css/Stage1.scss";
+import React from 'react';
+import { Routes, Route } from 'react-router-dom';
+import Stage1Home from './Stage1/Stage1Home';
+import HiraganaFlipCards from './Stage1/HiraganaFlipCards';
+import HiraganaQuiz from './Stage1/HiraganaQuiz';
+import HiraganaChart from './Stage1/HiraganaChart';
+import '../css/Stage.scss';
 
 const Stage1 = () => {
     return (
-        <div className="stage-1">
-            <h2>Stage 1: Hiragana Mastery</h2>
-
-            <nav className="stage-nav">
-                <ul>
-                    <li><NavLink to="/Stage1/Main">Overview</NavLink></li>
-                    <li><NavLink to="/Stage1/chart">Chart</NavLink></li>
-                    <li><NavLink to="/Stage1/flipcards">Flashcards</NavLink></li>
-                    <li><NavLink to="/Stage1/quiz">Quiz</NavLink></li>
-                </ul>
-            </nav>
-
-            <Outlet />
+        <div className="stage-container">
+            <h1>Stage 1: Hiragana</h1>
+            <div className="stage-content">
+                <Routes>
+                    <Route path="/" element={<Stage1Home />} />
+                    <Route path="/flip-cards" element={<HiraganaFlipCards />} />
+                    <Route path="/quiz" element={<HiraganaQuiz />} />
+                    <Route path="/chart" element={<HiraganaChart />} />
+                </Routes>
+            </div>
         </div>
     );
 };
 
 export default Stage1;
+
