@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { HiraganaCharacters, KatakanaCharacters } from '../util/data/characters';
 import { getKanjiCharacters } from '../util/data/kanjiCharacters';
-import { updateCharacterProgress, getProgression } from '../util/progression-stage1';
+import { updateCharacterProgress as updateHiraganaProgress, getProgression as getHiraganaProgression } from '../util/progression-stage1';
+import { updateCharacterProgress as updateKatakanaProgress, getProgression as getKatakanaProgression } from '../util/progression-stage2';
 import './css/Progression.scss';
 
 const Progression = () => {
@@ -10,7 +11,8 @@ const Progression = () => {
     katakana: false,
     kanji: false,
   });
-  const [characterData, setCharacterData] = useState({ characters: [] });
+  const [hiraganaData, setHiraganaData] = useState({ characters: [] });
+  const [katakanaData, setKatakanaData] = useState({ characters: [] });
   const [kanjiList, setKanjiList] = useState([]);
 
   useEffect(() => {
@@ -30,14 +32,29 @@ const Progression = () => {
   }, []);
 
   const loadCharacterData = async () => {
-    const data = await getProgression();
-    setCharacterData(data);
+    // Load both hiragana and katakana data
+    const hiraganaData = await getHiraganaProgression();
+    const katakanaData = await getKatakanaProgression();
+
+    setHiraganaData(hiraganaData);
+    setKatakanaData(katakanaData);
+
+    console.log('Loaded progression data:', {
+      hiragana: hiraganaData.characters.length,
+      katakana: katakanaData.characters.length
+    });
   };
 
   // Test function to update character progress
-  const testProgressUpdate = async (character) => {
-    console.log('Testing progress update for:', character);
-    await updateCharacterProgress(character, 5);
+  const testProgressUpdate = async (character, type) => {
+    console.log(`Testing progress update for ${type} character:`, character);
+
+    if (type === 'hiragana') {
+      await updateHiraganaProgress(character, 5);
+    } else if (type === 'katakana') {
+      await updateKatakanaProgress(character, 5);
+    }
+
     await loadCharacterData(); // Reload the data to see changes
   };
 
@@ -68,6 +85,9 @@ const Progression = () => {
       return "0";                      // Not started
     };
 
+    // Get the correct progression data based on type
+    const characterData = type === 'katakana' ? katakanaData : hiraganaData;
+
     return (
       <div className={`dropdown-content ${openDropdown[type] ? 'open' : ''}`}>
         {characters.map((char, index) => {
@@ -86,7 +106,7 @@ const Progression = () => {
             <div
               key={index}
               className="character-container"
-              onClick={() => testProgressUpdate(char.kana)} // Added for testing - comment this and below out to remove the test functionality
+              onClick={() => testProgressUpdate(charKey, type)}
               style={{ cursor: 'pointer' }}
               data-level={level}
             >
