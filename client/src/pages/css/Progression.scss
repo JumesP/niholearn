@@ -68,12 +68,12 @@
           background-color: #ffffff; // Not started
         }
         &[data-level="1"] {
-          background-color: #ffe0e0; // Just started
-          border-color: #ffb3b3;
+          background-color: #ffe0e0; // Stone level - now more pink
+          border-color: #ffb4b3;
         }
         &[data-level="2"] {
-          background-color: #fff0e0; // Basic recognition
-          border-color: #ffd1b3;
+          background-color: #ffe8c6; // Iron level - now more orange/amber
+          border-color: #ffc78a;
         }
         &[data-level="3"] {
           background-color: #fff7e0; // Intermediate

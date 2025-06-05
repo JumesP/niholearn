@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { HiraganaCharacters, KatakanaCharacters, KanjiCharacters } from '../util/data/characters';
+import { HiraganaCharacters, KatakanaCharacters } from '../util/data/characters';
+import { getKanjiCharacters } from '../util/data/kanjiCharacters';
 import { updateCharacterProgress, getProgression } from '../util/progression-stage1';
 import './css/Progression.scss';
 
@@ -10,9 +11,22 @@ const Progression = () => {
     kanji: false,
   });
   const [characterData, setCharacterData] = useState({ characters: [] });
+  const [kanjiList, setKanjiList] = useState([]);
 
   useEffect(() => {
     loadCharacterData();
+    // Get kanji characters - might be async loaded
+    setKanjiList(getKanjiCharacters());
+
+    // Update kanji list when it changes (might be loading from API)
+    const interval = setInterval(() => {
+      const currentKanji = getKanjiCharacters();
+      if (currentKanji.length > kanjiList.length) {
+        setKanjiList(currentKanji);
+      }
+    }, 2000);
+
+    return () => clearInterval(interval);
   }, []);
 
   const loadCharacterData = async () => {
@@ -44,21 +58,37 @@ const Progression = () => {
       return Math.min((progressInLevel / levelRange) * 100, 100);
     };
 
+    // Function to determine level based on progress
+    const getLevelFromProgress = (progress) => {
+      if (progress >= 400) return "5"; // Mastered
+      if (progress >= 200) return "4"; // Advanced
+      if (progress >= 100) return "3"; // Intermediate
+      if (progress >= 50) return "2";  // Basic recognition
+      if (progress >= 10) return "1";  // Just started
+      return "0";                      // Not started
+    };
+
     return (
       <div className={`dropdown-content ${openDropdown[type] ? 'open' : ''}`}>
         {characters.map((char, index) => {
-          const progressData = characterData.characters.find(c => c.character === char.kana) || {};
+          const charKey = type === 'kanji' ? char.kanji : char.kana;
+          const progressData = characterData.characters.find(c => c.character === charKey) || {};
+          const progress = progressData.progress || 0;
           const percentage = calculateProgressPercentage(
             progressData.progress || 0,
             progressData.thresholds || [10, 25, 50, 100, 200, 400, 800]
           );
+
+          // Determine the level for color coding
+          const level = getLevelFromProgress(progress);
 
           return (
             <div
               key={index}
               className="character-container"
               onClick={() => testProgressUpdate(char.kana)} // Added for testing - comment this and below out to remove the test functionality
-              style={{ cursor: 'pointer' }} // Visual indication it's clickable
+              style={{ cursor: 'pointer' }}
+              data-level={level}
             >
               <p>
                 <span className="kana">{type === 'kanji' ? char.kanji : char.kana}</span>
@@ -89,21 +119,21 @@ const Progression = () => {
       <div>
         <div className="dropdown">
           <button onClick={() => toggleDropdown('hiragana')}>
-            Hiragana {openDropdown.hiragana ? '▼' : '▶'}
+            Hiragana ({HiraganaCharacters.length} characters) {openDropdown.hiragana ? '▼' : '▶'}
           </button>
           {renderCharacters(HiraganaCharacters, 'hiragana')}
         </div>
         <div className="dropdown">
           <button onClick={() => toggleDropdown('katakana')}>
-            Katakana {openDropdown.katakana ? '▼' : '▶'}
+            Katakana ({KatakanaCharacters.length} characters) {openDropdown.katakana ? '▼' : '▶'}
           </button>
           {renderCharacters(KatakanaCharacters, 'katakana')}
         </div>
         <div className="dropdown">
           <button onClick={() => toggleDropdown('kanji')}>
-            Kanji {openDropdown.kanji ? '▼' : '▶'}
+            Kanji ({kanjiList.length} characters) {openDropdown.kanji ? '▼' : '▶'}
           </button>
-          {renderCharacters(KanjiCharacters, 'kanji')}
+          {renderCharacters(kanjiList, 'kanji')}
         </div>
       </div>
     </div>
