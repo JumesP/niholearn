@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-
 import { KatakanaCharacters } from "../../../util/data/characters";
-
+import { updateCharacterProgress } from '../../../util/progression-stage2';
 import './css/KatakanaQuiz.scss';
 
 // Update katakanaGroups to include new groups
@@ -17,6 +16,14 @@ const katakanaGroups = {
     r: KatakanaCharacters.slice(38, 43),
     w: KatakanaCharacters.slice(43, 45),
     extra: KatakanaCharacters.slice(45) // for ン
+};
+
+const updateProgression = async (character) => {
+    try {
+        await updateCharacterProgress(character, 1); // Award 1 XP for correct answer
+    } catch (error) {
+        console.error('Error updating katakana character progress:', error);
+    }
 };
 
 const KatakanaQuiz = () => {
@@ -102,6 +109,7 @@ const KatakanaQuiz = () => {
         if (isCorrect) {
             setScore(score + 1);
             setFeedback('Correct! 🎉');
+            updateProgression(currentQuestion.kana);
         } else {
             setFeedback(`Incorrect. The answer was "${currentQuestion.romaji}"`);
         }
