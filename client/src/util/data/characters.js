@@ -1,4 +1,5 @@
 // Used for Stage 1 and 2
+import { KanjiCharacters } from './kanjiCharacters';
 
 const HiraganaCharacters = [
         // Vowels
@@ -107,4 +108,5 @@ const KatakanaCharacters = [
     { kana: 'ン', romaji: 'n' }
 ];
 
-export { HiraganaCharacters, KatakanaCharacters };
+export { HiraganaCharacters, KatakanaCharacters, KanjiCharacters };
+
